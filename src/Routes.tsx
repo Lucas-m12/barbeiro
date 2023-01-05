@@ -9,14 +9,14 @@ export const Router = () => {
 	if (!isAuthenticated) {
 		return (
 			<Routes>
-				<Route path="/" element={<Login />} index />
+				<Route element={<Login />} index />
 			</Routes>
 		);
 	}
 
 	return (
 		<Routes>
- 			<Route path="/" element={<Home />} index />
+			<Route path="/" element={<Home />} index />
 		</Routes>
 	);
 };

@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useAuth = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-	const signIn = (cb?: VoidFunction) => {
+	const signIn = (token: string) => {
 		setIsAuthenticated(true);
-		if (typeof cb !== "undefined") cb();
+		localStorage.setItem("token", token);
 	};
 
-	const signOut = (cb?: VoidFunction) => {
+	const signOut = () => {
 		setIsAuthenticated(false);
-		if (typeof cb !== "undefined") cb();
 	};
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) setIsAuthenticated(true);
+	}, []);
 
 	return {
 		isAuthenticated,

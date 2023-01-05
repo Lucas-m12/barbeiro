@@ -12,7 +12,12 @@ import { Button, ButtonGroup, Container, CreateAccount, Form, FormGroup, Input, 
 import { useLogin } from "./useLogin";
 
 export const Login = () => {
-	const {handleClickSignUp} = useLogin();
+	const {
+		handleClickSignUp,
+		setEmail,
+		setPassword,
+		handleSubmit
+	} = useLogin();
 	const isApple = navigator.userAgent.indexOf("Macintosh") !== -1 || navigator.userAgent.indexOf("iOS") !== -1 || navigator.userAgent.indexOf("iPhone") !== -1;
 
 	return (
@@ -21,15 +26,23 @@ export const Login = () => {
 				<LogoContainer>
 					<Image src={Logo} alt="logo barbearia" />
 				</LogoContainer>
-				<Form>
+				<Form method="POST" onSubmit={handleSubmit}>
 					<FormGroup>
 						<InputArea>
 							<Image src={MailIcon} alt="icone de email" />
-							<Input placeholder="Email" type="email" />
+							<Input
+								placeholder="Email"
+								type="email"
+								onChange={(event) => setEmail(event.target.value)}
+							/>
 						</InputArea>
 						<InputArea>
 							<Image src={LockIcon} alt="icone de cadeado" />
-							<Input placeholder="Senha" type="password" />
+							<Input
+								placeholder="Senha"
+								type="password"
+								onChange={(event) => setPassword(event.target.value)}
+							/>
 						</InputArea>
 					</FormGroup>
 					<ButtonGroup>

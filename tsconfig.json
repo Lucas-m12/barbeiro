@@ -19,7 +19,10 @@
 		"paths": {
 			"@/*": ["./*"],
 			"@public/*": ["../public/*"]
-		}
+		},
+		"types": [
+      "vite-plugin-pwa/client"
+    ]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
